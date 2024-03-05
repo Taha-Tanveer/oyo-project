@@ -1,4 +1,6 @@
-"use client"; 
+"use client";
+import Link from "next/link";
+
 const Header3 = () => {
   return (
     <div className="bg-gradient-to-r from-red-600 to-red-400 h-60">
@@ -22,12 +24,14 @@ const Header3 = () => {
             placeholder="Search..."
             className=" h-16 outline-none px-3 text-lg border-r-2 col-span-1 "
           />
-          <button
-            type="submit"
-            className="h-16 px-3 py-2 col-span-1 bg-green-300 hover:cursor-pointer hover:bg-green-600 text-white text-xl transition"
+          <Link
+            href="/hotels"
+            className="h-16 px-3 py-2 col-span-1  bg-green-300 hover:cursor-pointer hover:bg-green-600 text-white text-xl transition flex justify-center items-center"
           >
-            Search
-          </button>
+            <button type="submit" className="text-center">
+              Search
+            </button>
+          </Link>
         </div>
         <div className="flex mx-20 my-5">
           <button

@@ -5,6 +5,7 @@ import { PiSuitcaseSimpleLight } from "react-icons/pi";
 import { HiOutlineBuildingOffice2 } from "react-icons/hi2";
 import { MdOutlineLocalOffer } from "react-icons/md";
 import { FaRegUserCircle } from "react-icons/fa";
+import Link from "next/link";
 const Header1 = () => {
   return (
     <div className=" h-20 px-5 flex justify-between  shadow-md  items-center ">
@@ -37,8 +38,10 @@ const Header1 = () => {
           para={"Call us to book now."}
         />
         <div className="flex items-center px-3 ">
-          <FaRegUserCircle className="text-2xl mr-5"/>
-          <h3 className="font-bold">Login / SignUp</h3>
+          <FaRegUserCircle className="text-2xl mr-5" />
+          <Link href="/login">
+            <h3 className="font-bold">Login / SignUp</h3>
+          </Link>
         </div>
       </div>
     </div>

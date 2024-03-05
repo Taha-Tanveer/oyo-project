@@ -8,10 +8,12 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        "login-backgriund":
+          'url("https://images.pexels.com/photos/1340304/pexels-photo-1340304.jpeg")',
       },
+      height:{
+        "large-box":"325px"
+      }
     },
   },
   plugins: [],
