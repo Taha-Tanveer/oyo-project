@@ -31,7 +31,7 @@ const Hotels = ({ hotels }) => {
     if (checkedList) {
       handleCheckedList();
     }
-  }, []);
+  });
 
   return (
     <>

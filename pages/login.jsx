@@ -97,7 +97,7 @@ const Login = () => {
         <div className="flex justify-center w-9/12 items-center ">
           <div className="text-white">
             <p className="font-bold text-5xl mb-5">
-              There's a smarter way to <span className="text-red-500">OYO</span>{" "}
+              There`&apos;`s a smarter way to <span className="text-red-500">OYO</span>{" "}
               around
             </p>
             <p className="text-xl italic">
