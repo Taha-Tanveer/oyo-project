@@ -1,83 +1,66 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const Hotel = () => {
+
+const Hotel = ({ hotel }) => {
   return (
-    <div className="border-2 h-72 border-red-500 rounded-lg  w-full mb-5 p-5">
+    <div className="border-2 h-86 border-red-500 rounded-lg  w-full mt-5 mb-5 p-5">
       <div className="flex  ">
         <Image
-          src={
-            "https://images.pexels.com/photos/1134176/pexels-photo-1134176.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-          }
+          src={hotel?.banner}
           alt="hotel"
           width={200}
           height={200}
-          className="w-96 h-60 rounded-lg large-box mr-3"
+          className="w-96 h-80 rounded-lg large-box mr-3 self-center"
         />
-        <div className="grid grid-rows-3 ">
-          <Image
-            src={
-              "https://images.pexels.com/photos/1134176/pexels-photo-1134176.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-            }
-            alt="hotel"
-            width={200}
-            height={200}
-            className="w-28  rounded-lg large-box "
-          />
-          <Image
-            src={
-              "https://images.pexels.com/photos/1134176/pexels-photo-1134176.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-            }
-            alt="hotel"
-            width={200}
-            height={200}
-            className="w-28  rounded-lg large-box "
-          />
-          <Image
-            src={
-              "https://images.pexels.com/photos/1134176/pexels-photo-1134176.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-            }
-            alt="hotel"
-            width={200}
-            height={200}
-            className="w-28  rounded-lg large-box "
-          />
-          <Image
-            src={
-              "https://images.pexels.com/photos/1134176/pexels-photo-1134176.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-            }
-            alt="hotel"
-            width={200}
-            height={200}
-            className="w-28  rounded-lg large-box "
-          />
+        <div className="flex flex-col justify-between ">
+          {hotel
+            ? hotel.gallery?.map((img) => (
+                <Image
+                  src={img}
+                  alt="hotel"
+                  width={200}
+                  height={200}
+                  className="w-28 h-14  rounded-lg large-box "
+                  key={img}
+                />
+              ))
+            : ""}
         </div>
         <div className="ml-20">
-          <h2 className="font-bold text-2xl line-clamp-1 ">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo a
-            possimus asperiores ea rem, iure dolores esse ipsam vero eius!
-          </h2>
-          <p className="text-justify my-5 text-lg">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate
-            suscipit fuga aliquid placeat perferendis natus neque consectetur
-            iure libero, blanditiis architecto consequuntur alias! Illo, minus
-            accusantium. Maxime qui dignissimos consequatur.
-          </p>
-          <p className="text-2xl my-5 ">
+          <h2 className="font-bold text-2xl line-clamp-1 ">{hotel?.name}</h2>
+          <p className="text-justify my-5 text-lg">{hotel?.description}</p>
+          <div className="text-2xl my-5 ">
             <span className="font-bold ">Facilities : </span>
-            <span>Free Wi-Fi , </span>
-            <span>Pet Friendly , </span>
-            <span>Swimming Pool , </span>
-            <span>Gym , </span>
-            <span>Free Parking , </span>
-            <span>Spa </span>
-          </p>
+
+            <ul className="flex ">
+              {hotel
+                ? hotel?.facilities?.map((facility) => (
+                    <li
+                      key={facility.name}
+                      className="mr-10 mb-3 flex items-center mt-5"
+                    >
+                      <span>
+                        <Image
+                          src={facility.img}
+                          alt="hotel"
+                          width={200}
+                          height={200}
+                          className="w-8 h-8 rounded-full"
+                        />
+                      </span>
+                      <span className="ml-2">{facility.name}</span>
+                    </li>
+                  ))
+                : ""}
+            </ul>
+          </div>
           <div className="felx items-center">
             <button className="w-60 h-14 rounded-lg bg-blue-400 text-lg">
-              Price : 4500
+              Price : &#8377; {hotel?.price}
             </button>
             <Link
-              href={"hotels/2"}
+              href={`/hotels/${hotel?._id}`}
               className="text-xl font-bold text-red-600 ml-10 "
             >
               See Details

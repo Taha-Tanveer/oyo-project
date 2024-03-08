@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import Block from "./Block";
 import { IoCallOutline } from "react-icons/io5";
@@ -6,7 +7,26 @@ import { HiOutlineBuildingOffice2 } from "react-icons/hi2";
 import { MdOutlineLocalOffer } from "react-icons/md";
 import { FaRegUserCircle } from "react-icons/fa";
 import Link from "next/link";
+import Cookies from "js-cookie";
+import { useRouter } from "next/router";
+import { useEffect , useState } from "react";
 const Header1 = () => {
+  const [auth, setAuth] = useState(false);
+
+  useEffect(() => {
+    const key =  Cookies.get("user");
+    if(key){
+      setAuth(true);
+      return
+    }
+    setAuth(false);
+  }, [auth]);
+  const router = useRouter();
+  const handleLogout = () => {
+    Cookies.remove("user");
+    setAuth(false);
+    router.push("/");
+  };
   return (
     <div className=" h-20 px-5 flex justify-between  shadow-md  items-center ">
       <Image
@@ -24,12 +44,12 @@ const Header1 = () => {
         />
         <Block
           icon={<PiSuitcaseSimpleLight />}
-          title={"Become a member"}
+          title={"OYO for Business"}
           para={"Trusted by 1000+ businesses."}
         />
         <Block
           icon={<HiOutlineBuildingOffice2 />}
-          title={"OYO for Business"}
+          title={"OYO for Hotels"}
           para={"Start earning in 30 min ."}
         />
         <Block
@@ -39,9 +59,15 @@ const Header1 = () => {
         />
         <div className="flex items-center px-3 ">
           <FaRegUserCircle className="text-2xl mr-5" />
-          <Link href="/login">
-            <h3 className="font-bold">Login / SignUp</h3>
-          </Link>
+          {auth ? (
+            <h3 className="font-bold cursor-pointer" onClick={handleLogout}>
+              Logout
+            </h3>
+          ) : (
+            <Link href="/login">
+              <h3 className="font-bold">Login / SignUp</h3>
+            </Link>
+          )}
         </div>
       </div>
     </div>

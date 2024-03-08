@@ -1,6 +1,9 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
     "paths": {
+      "@/components/ui/card": ["components/ui/card"],
+      "@/components/ui/*": ["components/ui/*"],
       "@/*": ["./*"]
     }
   }
